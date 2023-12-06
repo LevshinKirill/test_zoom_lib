@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF8">
+    <title>Title</title>
+    <script src="https://unpkg.com/js-image-zoom@0.7.0/js-image-zoom.js" type="application/javascript"></script>
+</head>
+<body>
+<div id="img-container" style="width: 400px">
+    <img src="https://github.com/malaman/js-image-zoom/blob/master/example/1.jpg?raw=true" />
+    <div class="item"></div>
+</div>
+
+<style>
+    .amzoom-lens {
+        border-radius: 50%;
+    }
+
+    .item{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    #block{
+        width: 600px;
+        height: 400px;
+        border:1px solid;
+    }
+</style>
+
+<script>
+
+const item = document.querySelector(".item");
+
+var options1 = {
+    width: 400,
+    zoomWidth: 100,
+    zoomPosition: 'original',
+    zoomLensStyle: 'opacity: 0; background-color: white; width: 100px; height: 100px',
+    zoomStyle: 'opacity: 1; width: 100px; height: 100px; border-radius: 50%',
+    zoomContainer: item,
+};
+
+new ImageZoom(document.querySelector('#img-container'), options1);
+
+document.querySelector('#img-container').onmousemove = function (e){
+  item.style.position = 'fixed';
+  item.style.left = e.clientX + - 50 + 'px';
+  item.style.top = e.clientY + - 50 + 'px';
+}
+
+</script>
+</body>
+</html>
